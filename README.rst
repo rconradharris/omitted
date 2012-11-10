@@ -2,9 +2,9 @@
 notset
 ======
 
-A do-not-care value for when ``None`` won't work.
+A Do-Not-Care Value for Python
 
-Let's talk about kwargs
+Let's Talk About Kwargs
 =======================
 
 It's easy to take for granted, but one of the most elegant aspects of Python
@@ -143,7 +143,7 @@ problem here is that caller's ``NotSet`` instance is different from the
 libraries ``NotSet`` instance, so they don't compare as identical.
 
 What we'd like is a way to define a single global singleton that represents
-this do-not-care condition across all Python packages, is the same way that
+this do-not-care condition across all Python packages, in the same way that
 ``None`` is identical no matter where it's used.
 
 
