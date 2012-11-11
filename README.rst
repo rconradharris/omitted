@@ -79,7 +79,7 @@ developers stop here because It Just Works. But it comes at a cost: we no
 longer have expected kwarg checking (benefit #2), no elegant way of setting
 default parameters (benefit #3), and we've lost our meaningful function
 signature (benefit #4). For these reasons, I consider this an anti-pattern and
-propose a a different approach.
+propose a different approach.
 
 None More None
 ==============
