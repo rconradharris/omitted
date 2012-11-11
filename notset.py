@@ -12,4 +12,4 @@ class _NotSetType(object):
 NotSet = _NotSetType()  # Singleton
 
 #This name avoids double negatives in the typical usage -- if not Empty: doSomething()
-Empty = NotSet
+Omitted = NotSet
