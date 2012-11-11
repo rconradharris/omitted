@@ -116,7 +116,7 @@ the benefits of explicit kwargs::
 So What's The Catch?
 ====================
 
-So, solving our default kwarg problem, we've gone ahead an published our
+So, solving our default kwarg problem, we've gone ahead and published our
 library containing our ``update`` function. Now suppose that someone comes along
 and wants to use our library. First of all, they'll be appreciative of our
 usage of explicit kwargs--once they get past the unusual looking ``NotSet``
