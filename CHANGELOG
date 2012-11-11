@@ -1,0 +1,6 @@
+0.1.1
+  - Renaming to Omitted, NotSet is deprecated due to the double-negative it
+    generates in if statements.
+
+0.1.0
+  - Initial checkin

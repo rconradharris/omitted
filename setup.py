@@ -3,12 +3,12 @@ from setuptools import setup
 
 setup(
     name='notset',
-    version='0.1.0',
+    version='0.1.1',
     url='https://github.com/rconradharris/notset',
     license='MIT',
     author='Rick Harris',
     author_email='rconradharris@gmail.com',
-    description='NotSet Do-Not-Care Value',
+    description='A Do-Not-Care Value for Python',
     long_description=__doc__,
     py_modules=['notset'],
     zip_safe=False,

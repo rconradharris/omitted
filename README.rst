@@ -26,7 +26,7 @@ their use becomes tricky.
 I'm going to talk about that problem, show one common anti-pattern that
 attempts to fix it, and then propose an alternate approach that retains all of
 the benefits mentioned above at the cost of introducing a new concept to
-Python, the ``NotSet`` singleton.
+Python, the ``Omitted`` singleton.
 
 Problem, What Problem?
 ======================
@@ -90,15 +90,15 @@ value. As we've seen above, ``None`` isn't good enough since ``None`` is a
 perfectly reasonable value for many attributes.
 
 Instead we need to create a new value, a singleton like ``None`` that can
-represent this case which I call ``NotSet``. With it, our function becomes::
+represent this case which I call ``Omitted``. With it, our function becomes::
 
-    NotSet = object()
+    Omitted = object()
 
-    def update(person, name=NotSet, age=NotSet):
-        if name is not NotSet:
+    def update(person, name=Omitted, age=Omitted):
+        if name is not Omitted:
             person.name = name
 
-        if age is not NotSet:
+        if age is not Omitted:
             person.age = age
 
 
@@ -119,14 +119,14 @@ So What's The Catch?
 So, solving our default kwarg problem, we've gone ahead an published our
 library containing our ``update`` function. Now suppose that someone comes along
 and wants to use our library. First of all, they'll be appreciative of our
-usage of explicit kwargs--once they get past the unusual looking ``NotSet``
+usage of explicit kwargs--once they get past the unusual looking ``Omitted``
 defaults.
 
 However, when they go to use it, they might do something like::
 
-    NotSet = object()
+    Omitted = object()
 
-    def update_with_email(person, name=NotSet, age=NotSet):
+    def update_with_email(person, name=Omitted, age=Omitted):
         update(person, name=name, age=age)
         send_email(person)
 
@@ -138,9 +138,9 @@ However, when they go to use it, they might do something like::
     <object object at 0x105ae2080>
 
 
-As you can see, ``person.name`` has ended up with the value of ``NotSet``.  The
-problem here is that caller's ``NotSet`` instance is different from the
-libraries ``NotSet`` instance, so they don't compare as identical.
+As you can see, ``person.name`` has ended up with the value of ``Omitted``.  The
+problem here is that caller's ``Omitted`` instance is different from the
+libraries ``Omitted`` instance, so they don't compare as identical.
 
 What we'd like is a way to define a single global singleton that represents
 this do-not-care condition across all Python packages, in the same way that
@@ -151,22 +151,22 @@ Introducing...
 ==============
 
 This Python module aims to solve this problem by defining the one-and-only
-``NotSet`` instance, shareable between all packages on the system.
+``Omitted`` instance, shareable between all packages on the system.
 
-To be clear, just because a library uses ``notset``, it doesn't mean the
-calling code must as well. Omitting the kwarg or setting it to ``None`` will
-behave correctly without having to know that ``NotSet`` was used behind the
+To be clear, just because a library uses ``Omitted``, it doesn't mean the
+calling code must as well. Not passing the kwarg or setting it to ``None`` will
+behave correctly without having to know that ``Omitted`` was used behind the
 scenes to make it work.
 
-The only time a caller would need to import ``NotSet`` is if they wanted to
+The only time a caller would need to import ``Omitted`` is if they wanted to
 proxy the do-not-care condition from the caller into the library. In that
 case, you'd just do something like::
 
     from libperson import update
-    from notset import NotSet
+    from notset import Omitted
 
-    def update_with_email(person, name=NotSet, age=NotSet):
+    def update_with_email(person, name=Omitted, age=Omitted):
         update(person, name=name, age=age)
         send_email(person)
 
-With that in mind, go ahead, import ``notset`` and let your code stop caring.
+With that in mind, go ahead, import ``Omitted`` and let your code stop caring.
