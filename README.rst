@@ -102,9 +102,8 @@ represent this case which I call ``Omitted``. With it, our function becomes::
             person.age = age
 
 
-Leaving aside the double-negative soundingness of 'not not-set', we end up
-with code that behaves exactly as we'd expect when called, but also preserves
-the benefits of explicit kwargs::
+We end up with code that behaves exactly as we'd expect when called, but also
+preserves the benefits of explicit kwargs::
 
     update(person, age=33)      # Just set the age to 33
     update(person, name=None)   # Set the name to None
