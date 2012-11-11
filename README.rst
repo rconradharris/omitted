@@ -79,7 +79,7 @@ developers stop here because It Just Works. But it comes at a cost: we no
 longer have expected kwarg checking (benefit #2), no elegant way of setting
 default parameters (benefit #3), and we've lost our meaningful function
 signature (benefit #4). For these reasons, I consider this an anti-pattern and
-propose a a different approach.
+propose a different approach.
 
 None More None
 ==============
@@ -116,7 +116,7 @@ the benefits of explicit kwargs::
 So What's The Catch?
 ====================
 
-So, solving our default kwarg problem, we've gone ahead an published our
+So, solving our default kwarg problem, we've gone ahead and published our
 library containing our ``update`` function. Now suppose that someone comes along
 and wants to use our library. First of all, they'll be appreciative of our
 usage of explicit kwargs--once they get past the unusual looking ``Omitted``
