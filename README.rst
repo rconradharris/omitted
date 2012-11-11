@@ -1,6 +1,6 @@
-======
-notset
-======
+=======
+omitted
+=======
 
 A Do-Not-Care Value for Python
 
@@ -162,7 +162,7 @@ proxy the do-not-care condition from the caller into the library. In that
 case, you'd just do something like::
 
     from libperson import update
-    from notset import Omitted
+    from omitted import Omitted
 
     def update_with_email(person, name=Omitted, age=Omitted):
         update(person, name=name, age=age)
