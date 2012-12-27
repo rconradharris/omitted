@@ -10,3 +10,7 @@ class _OmittedType(object):
 
 
 Omitted = _OmittedType()  # Singleton
+
+
+def truthy(x):
+    return bool(x) and x is not Omitted
